@@ -5,7 +5,7 @@ import (
 	"net"
 )
 
-func main() {
+func ReciveMsg() {
 	listener, err :=  net.Listen("tcp", ":8080")
 	if err != nil {
 		fmt.Println("listening error :", err)
