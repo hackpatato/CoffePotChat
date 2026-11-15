@@ -17,6 +17,10 @@ CoffePotChat is a simple TCP messaging application written in Go
 For run
 ```bash
   git clone https://github.com/hackpatato/CoffePotChat.git
+  cd CoffePotChat
+  cd src
+  go run .
+  
 ```
 
 
