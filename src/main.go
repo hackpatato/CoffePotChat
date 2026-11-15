@@ -1,10 +1,12 @@
 package main
 
-import(
+import (
 	"CoffePotChat/tcp"
+	"time"
 )
 
 func main() {
-	tcp.Sendmsg()
 	tcp.ReciveMsg()
+	time.Sleep(200 * time.Millisecond)
+	tcp.Sendmsg()
 }
