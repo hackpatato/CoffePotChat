@@ -1,8 +1,11 @@
 package tcp
 
 import (
+	"bufio"
 	"fmt"
 	"net"
+	"os"
+	"strings"
 	"time"
 )
 
@@ -14,20 +17,25 @@ func Sendmsg() {
 		return
 	}
 	defer conn.Close()
-	//msg
-	var msg string
-	
-	fmt.Println("enter your message:")
-	_, err = fmt.Scanf("%s", &msg)
-	if err != nil {
-		fmt.Println("error:", err)
-		return
+	// msg
+	reader := bufio.NewReader(os.Stdin)
+
+	for {
+		fmt.Println("enter your message:")
+		msg, err := reader.ReadString('\n')
+		if err != nil {
+			fmt.Println("error", err)
+			return
+		}
+		msg = strings.TrimSpace(msg)
+		if msg == "exit" {
+			break
+		}
+		_, err = conn.Write([]byte(msg))
+		if err != nil {
+			fmt.Println("sending msg error:", err)
+			return
+		}
 	}
-	_, err = conn.Write([]byte(msg))
-	if err != nil {
-		fmt.Println("sending msg error :", err)
-		return
-	}
-    
 
 }
