@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	tcp.ReciveMsg()
+	go tcp.ReciveMsg()
 	time.Sleep(200 * time.Millisecond)
 	tcp.Sendmsg()
 }
